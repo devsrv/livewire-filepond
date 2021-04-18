@@ -1,9 +1,14 @@
-<div>
+<div class="col-6 offset-3">
     <form wire:submit.prevent="updateProfile">
-        <x-forms.filepond
-            wire:model="image"
-        />
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
 
-        <button type="submit">Save</button>
+        <x-forms.filepond wire:model="image" />
+        @error('image') <p class="mt-2 text-sm text-danger">{{ $message }}</p> @enderror
+
+        <button type="submit" class="btn btn-outline-primary">Save</button>
     </form>
 </div>
