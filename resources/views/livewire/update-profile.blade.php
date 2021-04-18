@@ -1,4 +1,10 @@
 <div class="col-6 offset-3">
+    @if(session()->has('notify'))
+        <div class="alert alert-success">
+            {{ session('notify') }}
+        </div>
+    @endif
+
     <form wire:submit.prevent="updateProfile">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>

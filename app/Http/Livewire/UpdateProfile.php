@@ -13,7 +13,15 @@ class UpdateProfile extends Component
 
     public function updateProfile(): void
     {
-        // Will get hit when the submit button is clicked
+        $this->validate([
+            'image' => ['required', 'image', 'max:10000'],
+        ]);
+
+        $post = \App\Models\Post::create(['title' => 'test']);
+
+        $post->addMedia($this->image->getRealPath())->toMediaCollection('image');
+
+        session()->flash('notify', 'Form saved !');
     }
 
     public function render()
