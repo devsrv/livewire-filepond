@@ -18,8 +18,13 @@ class Post extends Model implements HasMedia
      */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('image')
+        // single file support
+        /*$this->addMediaCollection('image')
             ->singleFile()
+            ->acceptsMimeTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/gif']);*/
+
+        // multiple file support
+        $this->addMediaCollection('image')
             ->acceptsMimeTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/gif']);
     }
 }
